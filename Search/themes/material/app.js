@@ -616,7 +616,7 @@ function onSearchResultItemClick(a_ele) {
   $.post(`/${cur}:id2path`, {id: a_ele.id}, function (data) {
     if (data) {
       dialog.close();
-      var href = `/${cur}:${data}${can_preview ? '?a=view' : ''}`;
+      var href = `/${cur}:${data}${can_preview ? '' : ''}`;
       dialog = mdui.dialog({
         title: '<i class="mdui-icon material-icons">☞ </i>Target path',
         content: `<a href="${href}">${data}</a>`,
@@ -669,7 +669,7 @@ function get_file(path, file, callback) {
 // File display? A = view
 function file(path) {
   var name = path.split('/').pop();
-  var ext = name.split('.').pop().toLowerCase().replace(`?a=view`, "").toLowerCase();
+  var ext = name.split('.').pop().toLowerCase().replace(``, "").toLowerCase();
   if ("|html|php|css|go|java|js|json|txt|sh|md|".indexOf(`|${ext}|`) >= 0) {
     return file_code(path);
   }
